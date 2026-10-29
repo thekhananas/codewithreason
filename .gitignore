@@ -1,0 +1,52 @@
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+.envrc
+.netrc
+.npmrc
+.pypirc
+.git-credentials
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Dependencies, generated output, and caches
+.venv/
+venv/
+node_modules/
+.next/
+dist/
+build/
+out/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+*.tsbuildinfo
+.coverage
+htmlcov/
+coverage/
+
+# Runtime data, logs, and workstation metadata
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.log
+nohup.out
+.DS_Store
+.idea/
+.vscode/
+
+# Private development material
+/code-with-reason/docs/
+/code-with-reason/actions.md
