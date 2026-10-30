@@ -1,0 +1,1037 @@
+[
+  {
+    "problem_id": "two-sum-sorted",
+    "title": "Two Sum II — Sorted Input",
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "Given a nondecreasing integer array and a target with exactly one valid pair of distinct positions, return those positions in increasing order using one-based indexing. Use linear time and constant auxiliary space.",
+    "constraints": [
+      "2 <= len(nums) <= 10000",
+      "-1000000 <= nums[i], target <= 1000000",
+      "nums is sorted in nondecreasing order",
+      "Exactly one pair of distinct indices sums to target"
+    ],
+    "entrypoint_fn": "two_sum_sorted",
+    "starter_code": "def two_sum_sorted(nums, target):\n    pass\n",
+    "reference_solution": "def two_sum_sorted(nums, target):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        total = nums[left] + nums[right]\n        if total == target:\n            return [left + 1, right + 1]\n        if total < target:\n            left += 1\n        else:\n            right -= 1\n    return []\n",
+    "reference_code": "def two_sum_sorted(nums, target):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        total = nums[left] + nums[right]\n        if total == target:\n            return [left + 1, right + 1]\n        if total < target:\n            left += 1\n        else:\n            right -= 1\n    return []\n",
+    "target_time_complexity": "O(N)",
+    "target_space_complexity": "O(1)",
+    "max_scale_tick_ratio": 45.0,
+    "forbidden_leak_patterns": [
+      "return [left + 1, right + 1]",
+      "left += 1",
+      "right -= 1",
+      "left plus 1",
+      "left plus one",
+      "right plus 1",
+      "right plus one",
+      "increment the left pointer",
+      "decrement the right pointer",
+      "move left to the right",
+      "move right to the left"
+    ],
+    "invariants": [
+      {
+        "id": "structure",
+        "name": "A pair uses two distinct positions",
+        "rule": "Maintain two valid distinct candidate positions until the target pair is identified.",
+        "tier1_probe": "What information must your state retain to describe a candidate pair of distinct positions?",
+        "tier2_probe": "For the verified input, which two distinct positions are available before your search begins?",
+        "tier3_scaffold": "Candidate state → [identify distinct positions] → [compare candidate] → [justify state transition]"
+      },
+      {
+        "id": "indexing",
+        "name": "Public positions are one-based",
+        "rule": "The returned positions use the public one-based convention, not internal array offsets.",
+        "tier1_probe": "Which indexing convention does the output contract use, and does your result obey it?",
+        "tier2_probe": "Compare the positions in the expected result with the positions your result names.",
+        "tier3_scaffold": "Internal result → [translate using the output contract] → [verify both returned positions]"
+      },
+      {
+        "id": "boundary",
+        "name": "Ordered input justifies candidate elimination",
+        "rule": "Each rejected candidate region must be impossible under sorted order and the target comparison.",
+        "tier1_probe": "What does sorted order let you prove about the candidates you discard?",
+        "tier2_probe": "At the first state that diverges on this input, which discarded candidate could still satisfy the target?",
+        "tier3_scaffold": "Current candidates → [compare against target] → [prove one region impossible] → [retain remaining candidates]"
+      },
+      {
+        "id": "complexity",
+        "name": "Search work grows linearly",
+        "rule": "The number of candidate state transitions is bounded by a constant multiple of the array length.",
+        "tier1_probe": "How many times can your search reconsider the same positions as the input grows?",
+        "tier2_probe": "When the input grows tenfold, what does the measured operation growth imply about repeated work?",
+        "tier3_scaffold": "Work accounting → [charge each transition to progress] → [bound total transitions by input size]"
+      }
+    ],
+    "tier_fallbacks": {
+      "tier1_probe": "What information must your state retain to describe a candidate pair of distinct positions?",
+      "tier2_probe": "For the verified input, which two distinct positions are available before your search begins?",
+      "tier3_scaffold": "Candidate state → [identify distinct positions] → [compare candidate] → [justify state transition]",
+      "tier4_postmortem": "The explicit escape hatch permits the reference implementation. Compare each reference state transition with your own and explain why the documented invariant is maintained."
+    },
+    "archetype_tests": [
+      {
+        "archetype": "base_min_boundary",
+        "input_args": {
+          "nums": [
+            2,
+            7
+          ],
+          "target": 9
+        },
+        "expected_output": [
+          1,
+          2
+        ]
+      },
+      {
+        "archetype": "duplicates_and_ties",
+        "input_args": {
+          "nums": [
+            1,
+            3,
+            3,
+            8
+          ],
+          "target": 6
+        },
+        "expected_output": [
+          2,
+          3
+        ]
+      },
+      {
+        "archetype": "negative_or_extreme_values",
+        "input_args": {
+          "nums": [
+            -8,
+            -3,
+            1,
+            5
+          ],
+          "target": -11
+        },
+        "expected_output": [
+          1,
+          2
+        ]
+      },
+      {
+        "archetype": "off_by_one_edge",
+        "input_args": {
+          "nums": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "target": 12
+        },
+        "expected_output": [
+          3,
+          4
+        ]
+      },
+      {
+        "archetype": "asymptotic_scale",
+        "input_args": {
+          "nums": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99
+          ],
+          "target": 197
+        },
+        "expected_output": [
+          99,
+          100
+        ]
+      }
+    ],
+    "scale_generator_type": "sorted_two_sum"
+  },
+  {
+    "problem_id": "longest-unique-substring",
+    "title": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "category": "Sliding Window",
+    "description": "Return the length of the longest contiguous substring of s whose characters are all distinct. Treat each Python Unicode code point as one character; an empty input has answer zero.",
+    "constraints": [
+      "0 <= len(s) <= 10000",
+      "s may contain letters, digits, spaces, punctuation, and Unicode characters"
+    ],
+    "entrypoint_fn": "length_of_longest_substring",
+    "starter_code": "def length_of_longest_substring(s):\n    pass\n",
+    "reference_solution": "def length_of_longest_substring(s):\n    last_seen = {}\n    left = best = 0\n    for right, char in enumerate(s):\n        if char in last_seen and last_seen[char] >= left:\n            left = last_seen[char] + 1\n        last_seen[char] = right\n        best = max(best, right - left + 1)\n    return best\n",
+    "reference_code": "def length_of_longest_substring(s):\n    last_seen = {}\n    left = best = 0\n    for right, char in enumerate(s):\n        if char in last_seen and last_seen[char] >= left:\n            left = last_seen[char] + 1\n        last_seen[char] = right\n        best = max(best, right - left + 1)\n    return best\n",
+    "target_time_complexity": "O(N)",
+    "target_space_complexity": "O(N)",
+    "max_scale_tick_ratio": 45.0,
+    "forbidden_leak_patterns": [
+      "left = last_seen[char] + 1",
+      "last_seen[char] = right",
+      "right - left + 1",
+      "left = max(",
+      "last seen plus one",
+      "last seen plus 1",
+      "previous occurrence plus one",
+      "previous occurrence plus 1",
+      "right minus left plus one",
+      "move left past the previous occurrence"
+    ],
+    "invariants": [
+      {
+        "id": "structure",
+        "name": "Window state names a contiguous valid substring",
+        "rule": "State must identify a contiguous region containing no repeated character and the best length seen.",
+        "tier1_probe": "Which substring does your current state describe, and what makes it valid?",
+        "tier2_probe": "At the first repeated character on this input, which region does your state still claim is valid?",
+        "tier3_scaffold": "Current region → [test uniqueness] → [repair state if needed] → [measure valid region]"
+      },
+      {
+        "id": "window",
+        "name": "Stale duplicate locations cannot move the window backward",
+        "rule": "Only an earlier occurrence inside the active region can invalidate its uniqueness; its start never retreats.",
+        "tier1_probe": "Can an occurrence outside your active region invalidate that region?",
+        "tier2_probe": "For this input, is the remembered occurrence still inside the active region when you use it?",
+        "tier3_scaffold": "Remembered occurrence → [check membership in active region] → [justify boundary transition]"
+      },
+      {
+        "id": "boundary",
+        "name": "Length and empty input obey the public contract",
+        "rule": "The reported length counts all characters in a valid region and is zero for empty input.",
+        "tier1_probe": "How does your length calculation behave for an empty region and a one-character region?",
+        "tier2_probe": "Count the characters in the shortest valid region shown by this counterexample.",
+        "tier3_scaffold": "Region boundaries → [derive inclusive length] → [check empty and singleton cases]"
+      },
+      {
+        "id": "complexity",
+        "name": "State transitions are amortized linear",
+        "rule": "Record enough history to avoid repeatedly rebuilding or rescanning candidate substrings.",
+        "tier1_probe": "Which information could prevent your search from rechecking the same characters?",
+        "tier2_probe": "What does the measured work growth say about rescanning candidate regions?",
+        "tier3_scaffold": "History summary → [bounded per-character transition] → [amortized work bound]"
+      }
+    ],
+    "tier_fallbacks": {
+      "tier1_probe": "Which substring does your current state describe, and what makes it valid?",
+      "tier2_probe": "At the first repeated character on this input, which region does your state still claim is valid?",
+      "tier3_scaffold": "Current region → [test uniqueness] → [repair state if needed] → [measure valid region]",
+      "tier4_postmortem": "The explicit escape hatch permits the reference implementation. Compare each reference state transition with your own and explain why the documented invariant is maintained."
+    },
+    "archetype_tests": [
+      {
+        "archetype": "base_min_boundary",
+        "input_args": {
+          "s": ""
+        },
+        "expected_output": 0
+      },
+      {
+        "archetype": "duplicates_and_ties",
+        "input_args": {
+          "s": "abba"
+        },
+        "expected_output": 2
+      },
+      {
+        "archetype": "negative_or_extreme_values",
+        "input_args": {
+          "s": "🙂a🙂b"
+        },
+        "expected_output": 3
+      },
+      {
+        "archetype": "off_by_one_edge",
+        "input_args": {
+          "s": "dvdf"
+        },
+        "expected_output": 3
+      },
+      {
+        "archetype": "asymptotic_scale",
+        "input_args": {
+          "s": "ကခဂဃငစဆဇဈဉညဋဌဍဎဏတထဒဓနပဖဗဘမယရလဝသဟဠအဢဣဤဥဦဧဨဩဪါာိီုူေဲဳဴဵံ့း္်ျြွှဿ၀၁၂၃၄၅၆၇၈၉၊။၌၍၎၏ၐၑၒၓၔၕၖၗၘၙၚၛၜၝၞၟၠၡၢၣ"
+        },
+        "expected_output": 100
+      }
+    ],
+    "scale_generator_type": "sliding_window_string"
+  },
+  {
+    "problem_id": "rotated-sorted-min",
+    "title": "Find Minimum in Rotated Sorted Array",
+    "difficulty": "Medium",
+    "category": "Binary Search",
+    "description": "A strictly increasing integer array was rotated at an unknown position, possibly zero positions. Return its smallest value in logarithmic time. Values are distinct; the ties archetype checks coincident search boundaries.",
+    "constraints": [
+      "1 <= len(nums) <= 10000",
+      "-1000000 <= nums[i] <= 1000000",
+      "All values are distinct",
+      "nums is a rotation of a strictly increasing array"
+    ],
+    "entrypoint_fn": "find_min",
+    "starter_code": "def find_min(nums):\n    pass\n",
+    "reference_solution": "def find_min(nums):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        mid = (left + right) // 2\n        if nums[mid] > nums[right]:\n            left = mid + 1\n        else:\n            right = mid\n    return nums[left]\n",
+    "reference_code": "def find_min(nums):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        mid = (left + right) // 2\n        if nums[mid] > nums[right]:\n            left = mid + 1\n        else:\n            right = mid\n    return nums[left]\n",
+    "target_time_complexity": "O(log N)",
+    "target_space_complexity": "O(1)",
+    "max_scale_tick_ratio": 4.0,
+    "forbidden_leak_patterns": [
+      "nums[mid] > nums[right]",
+      "left = mid + 1",
+      "right = mid",
+      "mid plus 1",
+      "mid plus one",
+      "set right to mid",
+      "set right equal to mid",
+      "compare the middle value to the rightmost value",
+      "compare nums[mid] with nums[right]"
+    ],
+    "invariants": [
+      {
+        "id": "structure",
+        "name": "Search interval always contains the minimum",
+        "rule": "Every retained search interval must contain at least one position of the minimum.",
+        "tier1_probe": "What claim does your current search interval make about the minimum?",
+        "tier2_probe": "Mark the actual minimum on this input; after which transition does it leave your interval?",
+        "tier3_scaffold": "Current interval → [identify guaranteed candidate] → [justify retained interval]"
+      },
+      {
+        "id": "boundary",
+        "name": "Discarded side follows a valid ordering proof",
+        "rule": "The comparison must distinguish the ordered regions and never discard a still-possible minimum.",
+        "tier1_probe": "Which ordering fact proves that your discarded side cannot contain the minimum?",
+        "tier2_probe": "On the shortest failing input, what ordering fact supports your chosen interval update?",
+        "tier3_scaffold": "Observed ordering → [prove impossible region] → [retain every possible minimum]"
+      },
+      {
+        "id": "progress",
+        "name": "The interval shrinks without losing its final candidate",
+        "rule": "Each iteration strictly reduces the unresolved interval until a single valid candidate remains.",
+        "tier1_probe": "Does every iteration make progress even when your boundaries are adjacent?",
+        "tier2_probe": "Trace the boundary positions on this input until they become adjacent; what changes next?",
+        "tier3_scaffold": "Interval size → [verify strict decrease] → [preserve final candidate] → [check termination]"
+      },
+      {
+        "id": "complexity",
+        "name": "Search removes a constant fraction of candidates",
+        "rule": "The number of inspected candidates must grow logarithmically rather than linearly.",
+        "tier1_probe": "What fraction of the candidate interval disappears after one decision?",
+        "tier2_probe": "How does the measured tenfold input scaling compare with the required search growth?",
+        "tier3_scaffold": "Candidate count → [bound remaining fraction per step] → [derive iteration growth]"
+      }
+    ],
+    "tier_fallbacks": {
+      "tier1_probe": "What claim does your current search interval make about the minimum?",
+      "tier2_probe": "Mark the actual minimum on this input; after which transition does it leave your interval?",
+      "tier3_scaffold": "Current interval → [identify guaranteed candidate] → [justify retained interval]",
+      "tier4_postmortem": "The explicit escape hatch permits the reference implementation. Compare each reference state transition with your own and explain why the documented invariant is maintained."
+    },
+    "archetype_tests": [
+      {
+        "archetype": "base_min_boundary",
+        "input_args": {
+          "nums": [
+            5
+          ]
+        },
+        "expected_output": 5
+      },
+      {
+        "archetype": "duplicates_and_ties",
+        "input_args": {
+          "nums": [
+            2,
+            1
+          ]
+        },
+        "expected_output": 1
+      },
+      {
+        "archetype": "negative_or_extreme_values",
+        "input_args": {
+          "nums": [
+            4,
+            9,
+            -10,
+            -3
+          ]
+        },
+        "expected_output": -10
+      },
+      {
+        "archetype": "off_by_one_edge",
+        "input_args": {
+          "nums": [
+            3,
+            4,
+            5,
+            1,
+            2
+          ]
+        },
+        "expected_output": 1
+      },
+      {
+        "archetype": "asymptotic_scale",
+        "input_args": {
+          "nums": [
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36
+          ]
+        },
+        "expected_output": 0
+      }
+    ],
+    "scale_generator_type": "rotated_array"
+  },
+  {
+    "problem_id": "house-robber-dp",
+    "title": "House Robber — Maximum Non-Adjacent Sum",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Given the nonnegative value held in each house along a street, return the maximum total obtainable without choosing two adjacent houses. Choosing no house is allowed. Use linear time and constant auxiliary state.",
+    "constraints": [
+      "1 <= len(nums) <= 10000",
+      "0 <= nums[i] <= 1000000",
+      "The first and last houses are not adjacent"
+    ],
+    "entrypoint_fn": "rob",
+    "starter_code": "def rob(nums):\n    pass\n",
+    "reference_solution": "def rob(nums):\n    previous_two, previous_one = 0, 0\n    for value in nums:\n        previous_two, previous_one = previous_one, max(previous_one, previous_two + value)\n    return previous_one\n",
+    "reference_code": "def rob(nums):\n    previous_two, previous_one = 0, 0\n    for value in nums:\n        previous_two, previous_one = previous_one, max(previous_one, previous_two + value)\n    return previous_one\n",
+    "target_time_complexity": "O(N)",
+    "target_space_complexity": "O(1)",
+    "max_scale_tick_ratio": 45.0,
+    "forbidden_leak_patterns": [
+      "max(previous_one, previous_two + value)",
+      "previous_two, previous_one = previous_one",
+      "max(prev1, prev2 + x)",
+      "previous two plus",
+      "two houses back plus",
+      "maximum of skipping and taking",
+      "max(rob(nums[:-1]),",
+      "rob(nums[:-2]) + nums[-1]"
+    ],
+    "invariants": [
+      {
+        "id": "structure",
+        "name": "State describes a legal prefix optimum",
+        "rule": "Each state is the maximum value obtainable from a named prefix while never selecting adjacent houses.",
+        "tier1_probe": "Which prefix does each of your state values describe, and what makes its selection legal?",
+        "tier2_probe": "For the verified input, which selected houses does your intermediate state represent?",
+        "tier3_scaffold": "Named prefix → [define legal selections] → [compare choices for the next house] → [retain prefix optimum]"
+      },
+      {
+        "id": "base_case",
+        "name": "Small prefixes have complete legal optima",
+        "rule": "Initialization must handle one-house and two-house prefixes without reading missing positions or selecting adjacent houses together.",
+        "tier1_probe": "What legal choices exist when the street contains only one house?",
+        "tier2_probe": "Enumerate the legal selections in this shortest input and compare them with your initialized state.",
+        "tier3_scaffold": "Smallest prefix → [enumerate legal choices] → [assign matching state] → [check the next prefix]"
+      },
+      {
+        "id": "adjacency",
+        "name": "Taking a house excludes its immediate predecessor",
+        "rule": "A transition that selects the current house must combine it only with a compatible earlier prefix; skipping it preserves the previous legal optimum.",
+        "tier1_probe": "If a candidate includes the current house, which earlier choices remain compatible with it?",
+        "tier2_probe": "In the verified input, does the selection represented by your result contain neighboring houses?",
+        "tier3_scaffold": "Current house → [separate compatible legal choices] → [compare complete candidates] → [preserve prior state meanings]"
+      },
+      {
+        "id": "complexity",
+        "name": "Repeated prefix subproblems are summarized",
+        "rule": "Process each house a bounded number of times using bounded state instead of repeatedly expanding the same prefix subproblem.",
+        "tier1_probe": "How often does your implementation recompute the optimum for the same prefix?",
+        "tier2_probe": "What does the measured operation growth reveal about repeated prefix calculations?",
+        "tier3_scaffold": "Prefix dependency → [retain needed summary] → [bounded update per house] → [bound total work]"
+      }
+    ],
+    "tier_fallbacks": {
+      "tier1_probe": "Which prefix does each of your state values describe, and what makes its selection legal?",
+      "tier2_probe": "For the verified input, which selected houses does your intermediate state represent?",
+      "tier3_scaffold": "Named prefix → [define legal selections] → [compare choices for the next house] → [retain prefix optimum]",
+      "tier4_postmortem": "The explicit escape hatch permits the reference implementation. Explain how each retained prefix state obeys the non-adjacency constraint before comparing it with your implementation."
+    },
+    "archetype_tests": [
+      {
+        "archetype": "base_min_boundary",
+        "input_args": {
+          "nums": [
+            7
+          ]
+        },
+        "expected_output": 7
+      },
+      {
+        "archetype": "duplicates_and_ties",
+        "input_args": {
+          "nums": [
+            2,
+            2,
+            2
+          ]
+        },
+        "expected_output": 4
+      },
+      {
+        "archetype": "negative_or_extreme_values",
+        "input_args": {
+          "nums": [
+            1000000,
+            0,
+            1000000
+          ]
+        },
+        "expected_output": 2000000
+      },
+      {
+        "archetype": "off_by_one_edge",
+        "input_args": {
+          "nums": [
+            2,
+            1,
+            1,
+            2
+          ]
+        },
+        "expected_output": 4
+      },
+      {
+        "archetype": "asymptotic_scale",
+        "input_args": {
+          "nums": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "expected_output": 50
+      }
+    ],
+    "scale_generator_type": "dp_array"
+  },
+  {
+    "problem_id": "max-subarray-kadane",
+    "title": "Maximum Subarray Sum",
+    "difficulty": "Medium",
+    "category": "Kadane’s Algorithm",
+    "description": "Return the largest sum of any nonempty contiguous subarray of nums. The whole array may be negative; choosing an empty subarray is not allowed.",
+    "constraints": [
+      "1 <= len(nums) <= 10000",
+      "-1000000 <= nums[i] <= 1000000",
+      "The chosen subarray must be nonempty and contiguous"
+    ],
+    "entrypoint_fn": "max_subarray",
+    "starter_code": "def max_subarray(nums):\n    pass\n",
+    "reference_solution": "def max_subarray(nums):\n    current = best = nums[0]\n    for value in nums[1:]:\n        current = max(value, current + value)\n        best = max(best, current)\n    return best\n",
+    "reference_code": "def max_subarray(nums):\n    current = best = nums[0]\n    for value in nums[1:]:\n        current = max(value, current + value)\n        best = max(best, current)\n    return best\n",
+    "target_time_complexity": "O(N)",
+    "target_space_complexity": "O(1)",
+    "max_scale_tick_ratio": 45.0,
+    "forbidden_leak_patterns": [
+      "current = best = nums[0]",
+      "current = max(value, current + value)",
+      "best = max(best, current)",
+      "max(nums[i],",
+      "maximum of the current element and",
+      "restart the sum at the current element",
+      "initialize best to the first element",
+      "current plus value"
+    ],
+    "invariants": [
+      {
+        "id": "structure",
+        "name": "A candidate is a contiguous nonempty segment",
+        "rule": "Track the best valid segment ending at the current position separately from the best seen anywhere.",
+        "tier1_probe": "What does each of your running values mean after processing one position?",
+        "tier2_probe": "Which nonempty segment does your current state represent on the verified input?",
+        "tier3_scaffold": "Processed prefix → [state meaning at this position] → [extend or reconsider candidate] → [record global evidence]"
+      },
+      {
+        "id": "negative",
+        "name": "All-negative input still has a nonempty optimum",
+        "rule": "Initialization and updates must preserve valid nonempty candidates even when every value is negative.",
+        "tier1_probe": "What valid subarray does your initial answer represent if every element is negative?",
+        "tier2_probe": "Which nonempty choice explains the expected negative result on this counterexample?",
+        "tier3_scaffold": "Initial candidate → [check nonempty requirement] → [process negative values] → [retain a valid optimum]"
+      },
+      {
+        "id": "boundary",
+        "name": "Ending-here state differs from global optimum",
+        "rule": "A poor prefix must not permanently prevent a later contiguous candidate from becoming optimal.",
+        "tier1_probe": "Can the best segment ending here differ from the best segment found earlier?",
+        "tier2_probe": "Where does the best segment begin in this input, and what effect should its earlier prefix have?",
+        "tier3_scaffold": "Prior state → [consider candidates ending here] → [compare with earlier optimum]"
+      },
+      {
+        "id": "complexity",
+        "name": "Each value requires bounded work",
+        "rule": "Avoid enumerating all contiguous subarrays; summarize the processed prefix with bounded state.",
+        "tier1_probe": "What repeated subarray work does your implementation perform as the array grows?",
+        "tier2_probe": "What does the tenfold input scaling reveal about the number of candidate segments examined?",
+        "tier3_scaffold": "Prefix summary → [bounded update per value] → [bound total work]"
+      }
+    ],
+    "tier_fallbacks": {
+      "tier1_probe": "What does each of your running values mean after processing one position?",
+      "tier2_probe": "Which nonempty segment does your current state represent on the verified input?",
+      "tier3_scaffold": "Processed prefix → [state meaning at this position] → [extend or reconsider candidate] → [record global evidence]",
+      "tier4_postmortem": "The explicit escape hatch permits the reference implementation. Compare each reference state transition with your own and explain why the documented invariant is maintained."
+    },
+    "archetype_tests": [
+      {
+        "archetype": "base_min_boundary",
+        "input_args": {
+          "nums": [
+            7
+          ]
+        },
+        "expected_output": 7
+      },
+      {
+        "archetype": "duplicates_and_ties",
+        "input_args": {
+          "nums": [
+            2,
+            -2,
+            2
+          ]
+        },
+        "expected_output": 2
+      },
+      {
+        "archetype": "negative_or_extreme_values",
+        "input_args": {
+          "nums": [
+            -3,
+            -1,
+            -5
+          ]
+        },
+        "expected_output": -1
+      },
+      {
+        "archetype": "off_by_one_edge",
+        "input_args": {
+          "nums": [
+            -2,
+            1,
+            -3,
+            4,
+            -1,
+            2,
+            1,
+            -5,
+            4
+          ]
+        },
+        "expected_output": 6
+      },
+      {
+        "archetype": "asymptotic_scale",
+        "input_args": {
+          "nums": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "expected_output": 100
+      }
+    ],
+    "scale_generator_type": "kadane_array"
+  }
+]
