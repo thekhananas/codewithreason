@@ -1,0 +1,426 @@
+{
+  "mode": "offline",
+  "metrics": {
+    "answer_leakage_rate": 0.0,
+    "leaks": 0,
+    "responses": 75,
+    "counterexample_validity_rate": 100.0,
+    "valid_traces": 20,
+    "traces": 20,
+    "complexity_detection_recall": 100.0,
+    "complexity_detected": 5,
+    "complexity_cases": 5,
+    "invariant_diagnosis_accuracy": 100.0,
+    "correct_diagnoses": 25,
+    "cases": 25,
+    "median_latency_ms": 23.91058299690485,
+    "p95_latency_ms": 218.19141693413258,
+    "baseline_answer_leakage_rate": 100.0,
+    "baseline_median_ms": 0.0008749775588512421,
+    "baseline_p95_ms": 0.0015408731997013092,
+    "shield_challenge_leakage_rate": 0.0,
+    "shield_challenge_triggers": 75
+  },
+  "cases": [
+    {
+      "case_id": "two_sum_stub",
+      "problem_id": "two-sum-sorted",
+      "bug_type": "syntax_stub",
+      "failure_category": "SYNTAX_INCOMPLETE",
+      "expected_failure_category": "SYNTAX_INCOMPLETE",
+      "invariant": "structure",
+      "expected_invariant": "structure",
+      "diagnosis_correct": true,
+      "trace_verified": null,
+      "latency_ms": [
+        7.5706669595092535,
+        1.5348750166594982,
+        1.1919171083718538
+      ]
+    },
+    {
+      "case_id": "two_sum_zero_index",
+      "problem_id": "two-sum-sorted",
+      "bug_type": "off_by_one",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "indexing",
+      "expected_invariant": "indexing",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        24.14075005799532,
+        23.477874929085374,
+        23.48745916970074
+      ]
+    },
+    {
+      "case_id": "two_sum_duplicate_exit",
+      "problem_id": "two-sum-sorted",
+      "bug_type": "edge_case",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "boundary",
+      "expected_invariant": "boundary",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        24.517999961972237,
+        23.79141701385379,
+        23.63016689196229
+      ]
+    },
+    {
+      "case_id": "two_sum_quadratic",
+      "problem_id": "two-sum-sorted",
+      "bug_type": "suboptimal_complexity",
+      "failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "expected_failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        32.293833093717694,
+        32.12224994786084,
+        32.53545914776623
+      ]
+    },
+    {
+      "case_id": "two_sum_nonprogress",
+      "problem_id": "two-sum-sorted",
+      "bug_type": "infinite_loop",
+      "failure_category": "TIME_LIMIT_EXCEEDED",
+      "expected_failure_category": "TIME_LIMIT_EXCEEDED",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        70.70708298124373,
+        69.47833299636841,
+        70.62308304011822
+      ]
+    },
+    {
+      "case_id": "substring_syntax",
+      "problem_id": "longest-unique-substring",
+      "bug_type": "syntax_stub",
+      "failure_category": "SYNTAX_INCOMPLETE",
+      "expected_failure_category": "SYNTAX_INCOMPLETE",
+      "invariant": "structure",
+      "expected_invariant": "structure",
+      "diagnosis_correct": true,
+      "trace_verified": null,
+      "latency_ms": [
+        2.500416012480855,
+        1.2999589089304209,
+        1.1305420193821192
+      ]
+    },
+    {
+      "case_id": "substring_length_off_by_one",
+      "problem_id": "longest-unique-substring",
+      "bug_type": "off_by_one",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "boundary",
+      "expected_invariant": "boundary",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        23.943333188071847,
+        23.91058299690485,
+        24.07195884734392
+      ]
+    },
+    {
+      "case_id": "substring_stale_duplicate",
+      "problem_id": "longest-unique-substring",
+      "bug_type": "edge_case",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "window",
+      "expected_invariant": "window",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        24.729332886636257,
+        23.8691249396652,
+        24.604124948382378
+      ]
+    },
+    {
+      "case_id": "substring_quadratic",
+      "problem_id": "longest-unique-substring",
+      "bug_type": "suboptimal_complexity",
+      "failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "expected_failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        51.68058397248387,
+        50.341707887127995,
+        53.70545806363225
+      ]
+    },
+    {
+      "case_id": "substring_nonprogress",
+      "problem_id": "longest-unique-substring",
+      "bug_type": "infinite_loop",
+      "failure_category": "TIME_LIMIT_EXCEEDED",
+      "expected_failure_category": "TIME_LIMIT_EXCEEDED",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        157.38583402708173,
+        159.5722499769181,
+        161.36649996042252
+      ]
+    },
+    {
+      "case_id": "rotated_stub",
+      "problem_id": "rotated-sorted-min",
+      "bug_type": "syntax_stub",
+      "failure_category": "SYNTAX_INCOMPLETE",
+      "expected_failure_category": "SYNTAX_INCOMPLETE",
+      "invariant": "structure",
+      "expected_invariant": "structure",
+      "diagnosis_correct": true,
+      "trace_verified": null,
+      "latency_ms": [
+        2.4433748330920935,
+        1.356207998469472,
+        1.2815410736948252
+      ]
+    },
+    {
+      "case_id": "rotated_last_position",
+      "problem_id": "rotated-sorted-min",
+      "bug_type": "off_by_one",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "boundary",
+      "expected_invariant": "boundary",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        22.223791107535362,
+        22.39604201167822,
+        22.42954191751778
+      ]
+    },
+    {
+      "case_id": "rotated_reversed_ordering",
+      "problem_id": "rotated-sorted-min",
+      "bug_type": "edge_case",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "boundary",
+      "expected_invariant": "boundary",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        23.45208404585719,
+        22.772042080760002,
+        23.02845916710794
+      ]
+    },
+    {
+      "case_id": "rotated_linear_builtin",
+      "problem_id": "rotated-sorted-min",
+      "bug_type": "suboptimal_complexity",
+      "failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "expected_failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        22.812458919361234,
+        22.70249999128282,
+        22.452082950621843
+      ]
+    },
+    {
+      "case_id": "rotated_adjacent_nonprogress",
+      "problem_id": "rotated-sorted-min",
+      "bug_type": "infinite_loop",
+      "failure_category": "TIME_LIMIT_EXCEEDED",
+      "expected_failure_category": "TIME_LIMIT_EXCEEDED",
+      "invariant": "progress",
+      "expected_invariant": "progress",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        125.20454195328057,
+        188.62300016917288,
+        160.90779192745686
+      ]
+    },
+    {
+      "case_id": "robber_stub",
+      "problem_id": "house-robber-dp",
+      "bug_type": "syntax_stub",
+      "failure_category": "SYNTAX_INCOMPLETE",
+      "expected_failure_category": "SYNTAX_INCOMPLETE",
+      "invariant": "structure",
+      "expected_invariant": "structure",
+      "diagnosis_correct": true,
+      "trace_verified": null,
+      "latency_ms": [
+        2.632334129884839,
+        1.3417501468211412,
+        1.1819580104202032
+      ]
+    },
+    {
+      "case_id": "robber_skip_final",
+      "problem_id": "house-robber-dp",
+      "bug_type": "off_by_one",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "base_case",
+      "expected_invariant": "base_case",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        26.006707921624184,
+        23.6367080360651,
+        23.760000010952353
+      ]
+    },
+    {
+      "case_id": "robber_fixed_parity",
+      "problem_id": "house-robber-dp",
+      "bug_type": "edge_case",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "adjacency",
+      "expected_invariant": "adjacency",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        23.995582945644855,
+        23.93258293159306,
+        25.85583389736712
+      ]
+    },
+    {
+      "case_id": "robber_exponential",
+      "problem_id": "house-robber-dp",
+      "bug_type": "suboptimal_complexity",
+      "failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "expected_failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        64.82329196296632,
+        67.6565000321716,
+        65.43566705659032
+      ]
+    },
+    {
+      "case_id": "robber_nonprogress",
+      "problem_id": "house-robber-dp",
+      "bug_type": "infinite_loop",
+      "failure_category": "TIME_LIMIT_EXCEEDED",
+      "expected_failure_category": "TIME_LIMIT_EXCEEDED",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        218.19141693413258,
+        217.89095806889236,
+        215.8666669856757
+      ]
+    },
+    {
+      "case_id": "kadane_syntax",
+      "problem_id": "max-subarray-kadane",
+      "bug_type": "syntax_stub",
+      "failure_category": "SYNTAX_INCOMPLETE",
+      "expected_failure_category": "SYNTAX_INCOMPLETE",
+      "invariant": "structure",
+      "expected_invariant": "structure",
+      "diagnosis_correct": true,
+      "trace_verified": null,
+      "latency_ms": [
+        2.793374937027693,
+        1.2567918747663498,
+        1.0810841340571642
+      ]
+    },
+    {
+      "case_id": "kadane_skip_final",
+      "problem_id": "max-subarray-kadane",
+      "bug_type": "off_by_one",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "boundary",
+      "expected_invariant": "boundary",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        22.854667156934738,
+        22.931582992896438,
+        22.46933290734887
+      ]
+    },
+    {
+      "case_id": "kadane_empty_candidate",
+      "problem_id": "max-subarray-kadane",
+      "bug_type": "edge_case",
+      "failure_category": "WRONG_ANSWER",
+      "expected_failure_category": "WRONG_ANSWER",
+      "invariant": "negative",
+      "expected_invariant": "negative",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        23.070666939020157,
+        22.153915837407112,
+        22.241999860852957
+      ]
+    },
+    {
+      "case_id": "kadane_quadratic",
+      "problem_id": "max-subarray-kadane",
+      "bug_type": "suboptimal_complexity",
+      "failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "expected_failure_category": "ASYMPTOTIC_SUBOPTIMAL",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        45.29995797201991,
+        41.71149991452694,
+        42.108583031222224
+      ]
+    },
+    {
+      "case_id": "kadane_nonprogress",
+      "problem_id": "max-subarray-kadane",
+      "bug_type": "infinite_loop",
+      "failure_category": "TIME_LIMIT_EXCEEDED",
+      "expected_failure_category": "TIME_LIMIT_EXCEEDED",
+      "invariant": "complexity",
+      "expected_invariant": "complexity",
+      "diagnosis_correct": true,
+      "trace_verified": true,
+      "latency_ms": [
+        239.4549169111997,
+        232.43016609922051,
+        230.4508751258254
+      ]
+    }
+  ]
+}
