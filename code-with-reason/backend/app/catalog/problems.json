@@ -36,7 +36,7 @@
         "id": "structure",
         "name": "A pair uses two distinct positions",
         "rule": "Maintain two valid distinct candidate positions until the target pair is identified.",
-        "tier1_probe": "What information must your state retain to describe a candidate pair of distinct positions?",
+        "tier1_probe": "In [2, 7, 11, 15], which two different positions hold values that add up to 9? Count positions from 1.",
         "tier2_probe": "For the verified input, which two distinct positions are available before your search begins?",
         "tier3_scaffold": "Candidate state → [identify distinct positions] → [compare candidate] → [justify state transition]"
       },
@@ -283,7 +283,7 @@
         "id": "structure",
         "name": "Window state names a contiguous valid substring",
         "rule": "State must identify a contiguous region containing no repeated character and the best length seen.",
-        "tier1_probe": "Which substring does your current state describe, and what makes it valid?",
+        "tier1_probe": "In the string 'abcabcbb', does the piece 'abc' repeat any character?",
         "tier2_probe": "At the first repeated character on this input, which region does your state still claim is valid?",
         "tier3_scaffold": "Current region → [test uniqueness] → [repair state if needed] → [measure valid region]"
       },
@@ -392,7 +392,7 @@
         "id": "structure",
         "name": "Search interval always contains the minimum",
         "rule": "Every retained search interval must contain at least one position of the minimum.",
-        "tier1_probe": "What claim does your current search interval make about the minimum?",
+        "tier1_probe": "In [4, 5, 1, 2, 3], which value is the smallest?",
         "tier2_probe": "Mark the actual minimum on this input; after which transition does it leave your interval?",
         "tier3_scaffold": "Current interval → [identify guaranteed candidate] → [justify retained interval]"
       },
@@ -616,7 +616,7 @@
         "id": "structure",
         "name": "State describes a legal prefix optimum",
         "rule": "Each state is the maximum value obtainable from a named prefix while never selecting adjacent houses.",
-        "tier1_probe": "Which prefix does each of your state values describe, and what makes its selection legal?",
+        "tier1_probe": "If you choose the second house in [2, 7, 3], which neighboring houses must you leave out?",
         "tier2_probe": "For the verified input, which selected houses does your intermediate state represent?",
         "tier3_scaffold": "Named prefix → [define legal selections] → [compare choices for the next house] → [retain prefix optimum]"
       },
@@ -839,7 +839,7 @@
         "id": "structure",
         "name": "A candidate is a contiguous nonempty segment",
         "rule": "Track the best valid segment ending at the current position separately from the best seen anywhere.",
-        "tier1_probe": "What does each of your running values mean after processing one position?",
+        "tier1_probe": "In [4, -1, 2], what is the sum of these three neighboring numbers?",
         "tier2_probe": "Which nonempty segment does your current state represent on the verified input?",
         "tier3_scaffold": "Processed prefix → [state meaning at this position] → [extend or reconsider candidate] → [record global evidence]"
       },

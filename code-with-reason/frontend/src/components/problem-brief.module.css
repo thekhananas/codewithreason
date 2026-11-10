@@ -1,0 +1,174 @@
+.brief {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #cec5b2;
+  border-radius: 8px;
+  background: #f4f0e7;
+  color: var(--ink, #141413);
+}
+.heading h2 {
+  margin: 0 0 13px;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.task,
+.contract dd,
+.remember,
+.functionNote {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 65ch;
+}
+.contract {
+  margin: 18px 0 20px;
+}
+.contract > div {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 10px;
+}
+.contract > div + div {
+  margin-top: 8px;
+}
+.contract dt {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+.contract dd {
+  margin: 0;
+}
+.examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.example {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d6cdbf;
+  border-radius: 5px;
+  background: var(--surface, #fffdf9);
+}
+.example h3 {
+  margin: 0 0 13px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.example dl {
+  margin: 0;
+}
+.example dl > div + div {
+  margin-top: 12px;
+}
+.example dt {
+  margin-bottom: 4px;
+  color: var(--muted, #59564f);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.example dd {
+  margin: 0;
+}
+.example pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.example code {
+  font-family: var(--font-code), monospace;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.example p {
+  margin: 14px 0 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.remember {
+  margin-top: 17px;
+}
+.remember strong {
+  font-weight: 600;
+}
+.functionNote {
+  margin-top: 15px;
+  color: var(--muted, #59564f);
+  font-size: 15px;
+}
+.functionNote code {
+  color: var(--ink, #141413);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.constraints {
+  margin-top: 18px;
+  padding-top: 8px;
+  border-top: 1px solid #d1c6b3;
+}
+.constraints summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  list-style: none;
+}
+.constraints summary::-webkit-details-marker {
+  display: none;
+}
+.constraints summary:focus-visible {
+  outline: 3px solid var(--cobalt, #2447bb);
+  outline-offset: 3px;
+}
+.constraints[open] summary svg {
+  transform: rotate(180deg);
+}
+.constraints ul {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+.constraints li {
+  font-family: var(--font-code), monospace;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.constraints li + li {
+  margin-top: 6px;
+}
+@media (max-width: 600px) {
+  .brief {
+    padding: 20px 18px;
+  }
+  .examples {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contract > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}
+
+.efficiency {
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.efficiency code {
+  color: var(--ink);
+  font-size: 15px;
+}

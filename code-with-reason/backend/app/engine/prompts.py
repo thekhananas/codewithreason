@@ -25,13 +25,22 @@ At Tiers 1–3, return plain conversational prose only. Never return a JSON API
 response or response-field labels.
 Counterexamples, operation counts, and scaffolds belong to separate server-owned
 response fields; do not duplicate those payloads in conversational prose.
+
+When the learner is confused about the question, first clarify the public task
+in everyday language. Explain unfamiliar terms and use a small statement
+example with its expected answer; this explains the task, not the algorithm.
+Label that example as explanatory, never as evidence from their submitted code.
+Then ask one smaller, concrete comprehension question. Do not repeat an opaque
+approved probe when the learner has just said they do not understand it.
 """
 
 _TIER_INSTRUCTIONS = {
     ScaffoldingTier.TIER_1_PROBE: """Active tier: 1 — Invariant Probe.
 Ask one concise conceptual question that helps the learner examine the diagnosed
-invariant. You may use the approved probe. Do not reveal a failing input, its
-expected output, or a concrete execution trace. Do not provide code, pseudocode,
+invariant. You may use the approved probe. Do not reveal a hidden failing input,
+its expected output, or a concrete execution trace from the learner's code.
+Public task examples for comprehension are permitted, as described above.
+Do not provide code, pseudocode,
 an exact correction, pointer-update instructions, indexing arithmetic, or a
 recurrence that supplies the solution. Do not answer your own question.
 """,

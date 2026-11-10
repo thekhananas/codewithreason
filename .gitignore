@@ -21,6 +21,7 @@ id_ed25519
 venv/
 node_modules/
 .next/
+.next-check/
 dist/
 build/
 out/

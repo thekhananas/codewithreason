@@ -9,6 +9,7 @@ import httpx
 
 from app.config import Settings, get_settings
 from app.engine.prompts import build_messages
+from app.engine.student_guidance import clarify_public_task
 from app.models.schemas import CounterexampleTrace, InvariantNode, ProblemSchema, ScaffoldingTier
 
 
@@ -51,6 +52,13 @@ class LLMClient:
                           tier: ScaffoldingTier, trace: CounterexampleTrace | None = None,
                           user_code: str = "", user_message: str = "") -> str:
         tier = ScaffoldingTier(tier)
+        # Understanding the statement precedes algorithmic hints. Public task
+        # examples need neither a provider call nor disclosure of a hidden test.
+        # The orchestrator still applies the unchanged outbound answer shield.
+        if tier != ScaffoldingTier.TIER_4_POSTMORTEM:
+            clarification = clarify_public_task(problem, user_message)
+            if clarification is not None:
+                return clarification
         fallback = self.offline.generate(problem, invariant, tier, trace)
         provider = self._provider()
         if provider == "offline":
